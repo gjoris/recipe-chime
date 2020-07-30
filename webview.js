@@ -17,7 +17,7 @@ module.exports = (Franz) => {
             totalUnreadMessages += parseInt(value.innerHTML, 10);
         }))
 
-        if (totalUnreadMessages > 0) Franz.setBadge(totalUnreadMessages);
+        Franz.setBadge(totalUnreadMessages);
     }
 
     Franz.loop(getMessages);
