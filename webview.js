@@ -5,11 +5,16 @@ module.exports = (Franz) => {
 
         const allPossibleUnreadBadges = document.querySelectorAll(".UnreadBadge");
 
-        allPossibleUnreadBadges.forEach(((value, key, parent) => {
+        allPossibleUnreadBadges.forEach(((value) => {
             //Skip the "Call history"
-            if (!value.parentElement?.href?.endsWith("/history")) {
-                totalUnreadMessages += parseInt(value.innerHTML, 10);
+            try {
+                if (value.parentElement?.href?.endsWith("/history")) {
+                    return;
+                }
+            } catch (e) {
+                console.error("An exception occured while trying to find the parentElement: ", e);
             }
+            totalUnreadMessages += parseInt(value.innerHTML, 10);
         }))
 
         if (totalUnreadMessages > 0) Franz.setBadge(totalUnreadMessages);
