@@ -1,3 +1,12 @@
+function shouldBeMuted(value) {
+    let classList = value.previousSibling.classList;
+    let shouldBeMuted = false;
+    classList.forEach((klazz) => {
+        shouldBeMuted = shouldBeMuted || klazz.endsWith("mutedIcon")
+    });
+    return shouldBeMuted;
+}
+
 module.exports = (Franz) => {
 
     const getMessages = function() {
@@ -14,7 +23,7 @@ module.exports = (Franz) => {
             } catch (e) {
                 console.error("An exception occured while trying to find the parentElement: ", e);
             }
-            totalUnreadMessages += parseInt(value.innerHTML, 10);
+            if (!shouldBeMuted(value)) totalUnreadMessages += parseInt(value.innerHTML, 10);
         }))
 
         Franz.setBadge(totalUnreadMessages);
