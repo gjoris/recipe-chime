@@ -1,7 +1,7 @@
 {
   "id": "chime",
   "name": "Amazon Chime",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Amazon Chime",
   "main": "index.js",
   "author": "Geroen Joris <geroen@gmail.com>",
