@@ -1,0 +1,13 @@
+{
+  "id": "chime",
+  "name": "Amazon Chime",
+  "version": "1.0.0",
+  "description": "Amazon Chime",
+  "main": "index.js",
+  "author": "Geroen Joris <geroen@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/gjoris/recipe-chime",
+  "config": {
+    "serviceURL": "https://app.chime.aws/"
+  }
+}
