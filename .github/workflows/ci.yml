@@ -13,12 +13,19 @@ jobs:
       - uses: actions/checkout@master
         with:
           ref: ${{ github.ref }}
-      - name: tag number
-        run: echo ${{ github.event.release.tag_name }}
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Check output
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ steps.vars.outputs.tag }}
       - name: list contents
         run: ls -lart
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
-          filename: release-${{ github.event.release.tag_name }}.zip
+          filename: release-$RELEASE_VERSION.zip
           exclusions: '*.git* install*.* LICENSE .gitignore'
