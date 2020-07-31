@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: tag number
         run: echo ${{ github.event.release.tag_name }}
+      - name: list contents
+        run: ls -lart
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
