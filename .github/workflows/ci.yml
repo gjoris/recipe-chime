@@ -1,9 +1,6 @@
 name: Create Archive
 on:
   push:
-    branches:
-      - 'releases/**'
-      - '!releases/**-alpha'
     tags:
       - 'v*'
 jobs:
