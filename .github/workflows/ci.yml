@@ -10,9 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: show event
-        run: echo ${{ github.event }}
-      - uses: actions/checkout@master
+      - uses: actions/checkout@${GITHUB_REF##*/}
       - name: tag number
         run: echo ${{ github.event.release.tag_name }}
       - name: list contents
